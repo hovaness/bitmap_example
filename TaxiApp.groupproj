@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{8A04FDD3-64E0-4682-94BD-87B0C9CD3C7B}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="TaxiConsole.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="TaxiConsole">
+        <MSBuild Projects="TaxiConsole.dproj"/>
+    </Target>
+    <Target Name="TaxiConsole:Clean">
+        <MSBuild Projects="TaxiConsole.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TaxiConsole:Make">
+        <MSBuild Projects="TaxiConsole.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="TaxiConsole"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="TaxiConsole:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="TaxiConsole:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
